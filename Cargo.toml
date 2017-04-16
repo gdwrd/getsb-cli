@@ -1,0 +1,7 @@
+[package]
+name = "getsb"
+version = "0.1.0"
+authors = ["Nazarii Sheremet <nazarii.sheremet@gmail.com>"]
+
+[dependencies]
+knock = "0.1"
