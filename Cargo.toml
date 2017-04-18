@@ -5,6 +5,5 @@ authors = ["Nazarii Sheremet <nazarii.sheremet@gmail.com>"]
 
 [dependencies]
 clap = "2.23"
-
-[dependencies.knock]
-path = "../r_http"
+knock = "0.1"
+serde_json = "0.9"

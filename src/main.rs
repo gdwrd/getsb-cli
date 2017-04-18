@@ -7,6 +7,7 @@ mod sender;
 mod parser;
 mod errors;
 
+// HTTP Request structure
 pub struct Request {
     body: String,
     headers: HashMap<String, String>,
@@ -15,6 +16,7 @@ pub struct Request {
 }
 
 fn main() {
+    // Validate and set args using clap crate for building CLI
     let matches = App::new("Getsb")
         .version("0.1.0")
         .author("Nazarii Sheremet. <nazarii.sheremet@gmail.com>")
@@ -56,9 +58,9 @@ fn main() {
                                  .help("print debug information verbosely")))
         .get_matches();
 
-
-
+    // Checking first request-file
     if let Some(file) = matches.value_of("request-file") {
+        // Parsing file for creating request
         proccess_file(file.to_string())
     } else {
         let mut method = String::new();
@@ -97,5 +99,5 @@ fn main() {
 }
 
 fn proccess_file(filename: String) {
-    println!("{:?}", filename);
+    parser::parse_file(&filename);
 }

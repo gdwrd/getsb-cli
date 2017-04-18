@@ -1,10 +1,10 @@
 extern crate knock;
 
 use std::process;
-use self::knock::*;
-use self::knock::response::Response;
 use Request;
 use errors;
+use self::knock::*;
+use self::knock::response::Response;
 
 pub fn send(request: self::Request) {
     let mut http = match HTTP::new(&request.url) {
