@@ -3,6 +3,14 @@ name = "getsb"
 version = "0.1.0"
 authors = ["Nazarii Sheremet <nazarii.sheremet@gmail.com>"]
 
+description = "Getsb is a command line tool for sending HTTP request."
+documentation = "https://docs.rs/getsb"
+repository = "https://github.com/nsheremet/getsb-cli"
+homepage = "https://github.com/nsheremet/getsb-cli"
+readme = "README.md"
+keywords = ["http", "command-line", "tools"]
+license = "MPL-2.0"
+
 [dependencies]
 clap = "2.23"
 knock = "0.1"

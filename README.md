@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/nsheremet/getsb-cli.svg?branch=master)](https://travis-ci.org/nsheremet/getsb-cli)
 [![Build status](https://ci.appveyor.com/api/projects/status/45mgunbeurixiiwj?svg=true)](https://ci.appveyor.com/project/nsheremet/knocli)
-[![Crates.io](https://img.shields.io/crates/v/getsb-cli.svg)](https://crates.io/crates/getsb-cli)
+[![Crates.io](https://img.shields.io/crates/v/getsb.svg)](https://crates.io/crates/getsb)
 
 Getsb is a command line tool for sending HTTP request.
 
