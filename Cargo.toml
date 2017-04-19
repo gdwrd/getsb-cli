@@ -4,4 +4,6 @@ version = "0.1.0"
 authors = ["Nazarii Sheremet <nazarii.sheremet@gmail.com>"]
 
 [dependencies]
+clap = "2.23"
 knock = "0.1"
+serde_json = "0.9"

@@ -1,0 +1,10 @@
+{
+  "method": "GET",
+  "url": "https://core.test.redflag.cc/api/trains",
+  "headers": [
+    "Content-Type: application/json"
+  ],
+  "body": {
+    "key": "value"
+  }
+}
