@@ -1,8 +1,8 @@
 {
-  "method": "POST",
-  "url": "https://example.com/api/data",
+  "method": "GET",
+  "url": "https://core.test.redflag.cc/api/trains",
   "headers": [
-    "Content-Type: application/json",
+    "Content-Type: application/json"
   ],
   "body": {
     "key": "value"

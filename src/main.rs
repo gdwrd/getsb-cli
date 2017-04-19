@@ -8,6 +8,7 @@ mod parser;
 mod errors;
 
 // HTTP Request structure
+#[derive(Debug)]
 pub struct Request {
     body: String,
     headers: HashMap<String, String>,
@@ -20,7 +21,7 @@ fn main() {
     let matches = App::new("Getsb")
         .version("0.1.0")
         .author("Nazarii Sheremet. <nazarii.sheremet@gmail.com>")
-        .about("Does awesome things")
+        .about("Getsb is a command line tool for sending HTTP request.")
         .arg(Arg::with_name("request-file")
                  .short("r")
                  .long("request-file")
@@ -98,6 +99,8 @@ fn main() {
     }
 }
 
+// Working with request info from file
 fn proccess_file(filename: String) {
-    parser::parse_file(&filename);
+    let request = parser::parse_file(&filename);
+    sender::send(request);
 }

@@ -8,6 +8,7 @@ use errors;
 use Request;
 use self::serde_json::Value;
 
+// Parse json file
 pub fn parse_file(filename: &str) -> Request {
     let mut file = match File::open(filename) {
         Ok(file) => file,
@@ -43,8 +44,7 @@ pub fn parse_file(filename: &str) -> Request {
     loop {
         if json["headers"][i] != Value::Null {
             let mut tmp = json["headers"][i].to_string();
-            tmp.pop();
-            tmp.remove(0);
+            tmp = remove_quotes(tmp);
             let item: Vec<&str> = tmp.split(":").collect();
             data.insert(item[0].to_string(), item[1].to_string());
         } else {
@@ -55,17 +55,25 @@ pub fn parse_file(filename: &str) -> Request {
     }
 
     Request {
-        method: json["method"].to_string(),
-        url: json["url"].to_string(),
+        method: remove_quotes(json["method"].to_string()),
+        url: remove_quotes(json["url"].to_string()),
         body: json["body"].to_string(),
         headers: data,
     }
 }
 
+// Checking the required fields in json
 fn validate_json(json: serde_json::Value) {
     if json["method"] == Value::Null || json["url"] == Value::Null ||
        json["body"] == Value::Null || json["headers"] == Value::Null {
         errors::invalid_json();
         process::exit(0);
     }
+}
+
+// Removing quotes from the beginning and end of the string
+fn remove_quotes(mut str: String) -> String {
+    str.pop();
+    str.remove(0);
+    str.to_string()
 }
