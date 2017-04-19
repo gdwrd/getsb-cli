@@ -97,4 +97,4 @@ please make your issues, and pull requests there.
 
 Getsb is distributed under the terms of both the MPL2.0 license.
 
-See [LICENCE](./LICENCE) for more information.
+See [LICENSE](./LICENSE) for more information.
