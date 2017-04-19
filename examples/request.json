@@ -1,6 +1,6 @@
 {
   "method": "GET",
-  "url": "https://core.test.redflag.cc/api/trains",
+  "url": "http://www.mocky.io/v2/58f48af0100000b60f68cad8",
   "headers": [
     "Content-Type: application/json"
   ],

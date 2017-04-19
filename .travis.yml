@@ -6,3 +6,12 @@ rust:
 matrix:
   allow_failures:
     - rust: nightly
+
+before_install:
+  - sudo add-apt-repository ppa:duggan/bats --yes
+  - sudo apt-get update -qq
+  - sudo apt-get install -qq bats
+script:
+  - cargo build --release
+  - sudo mv target/release/getsb /usr/local/bin
+  - bats tests
