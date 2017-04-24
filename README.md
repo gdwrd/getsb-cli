@@ -83,6 +83,13 @@ $ getsb -r request.json # =>
 # Response
 ```
 
+##### Save request to file
+
+```shell
+$ getsb GET http://example.com -f response.dat # =>
+# Response saved to file: response.dat
+```
+
 ## Options
 
 ![Imgur](http://i.imgur.com/rAzJdFv.png?1)

@@ -33,3 +33,17 @@ pub fn invalid_json() {
     println!("\tgetsb [OPTIONS] <METHOD> <URL> [SUBCOMMAND]");
     println!("For more information try --help");
 }
+
+pub fn invalid_save_path() {
+    println!("error: The to-file path is invalid:");
+    println!("\r\nUSAGE:");
+    println!("\tgetsb [OPTIONS] <METHOD> <URL> [SUBCOMMAND]");
+    println!("For more information try --help");
+}
+
+pub fn cant_save_response() {
+    println!("error: The Response to file can't be saved");
+    println!("\r\nUSAGE:");
+    println!("\tgetsb [OPTIONS] <METHOD> <URL> [SUBCOMMAND]");
+    println!("For more information try --help");
+}
