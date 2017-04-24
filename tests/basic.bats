@@ -3,7 +3,7 @@
 # checking basic func
 @test "checking help option" {
   run getsb --help
-  [ "${lines[0]}" = "Getsb 0.1.0" ]
+  [ "${lines[0]}" = "Getsb 0.1.1" ]
   [ "${lines[1]}" = "Nazarii Sheremet. <nazarii.sheremet@gmail.com>" ]
 }
 
