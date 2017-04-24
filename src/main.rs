@@ -19,7 +19,7 @@ pub struct Request {
 fn main() {
     // Validate and set args using clap crate for building CLI
     let matches = App::new("Getsb")
-        .version("0.1.0")
+        .version("0.1.1")
         .author("Nazarii Sheremet. <nazarii.sheremet@gmail.com>")
         .about("Getsb is a command line tool for sending HTTP request.")
         .arg(Arg::with_name("request-file")

@@ -1,6 +1,6 @@
 [package]
 name = "getsb"
-version = "0.1.0"
+version = "0.1.1"
 authors = ["Nazarii Sheremet <nazarii.sheremet@gmail.com>"]
 
 description = "Getsb is a command line tool for sending HTTP request."
