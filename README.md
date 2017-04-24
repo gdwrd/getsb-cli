@@ -8,6 +8,12 @@ Getsb is a command line tool for sending HTTP request.
 
 ## Installation
 
+### With Cargo
+
+```shell
+$ cargo install getsb
+```
+
 ### Manual
 You can download prebuilt binaries in the
 [releases section](https://github.com/nsheremet/getsb-cli/releases), or create
