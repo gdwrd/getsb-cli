@@ -31,3 +31,8 @@
   run getsb -r examples/request.json
   [[ "${lines[0]}" =~ "Status: 200" ]]
 }
+
+@test "checking Saving Request to file" {
+  run getsb -r examples/request.json -f test.txt
+  [[ "${lines[0]}" =~ "Response was saved to file: test.txt" ]]
+}

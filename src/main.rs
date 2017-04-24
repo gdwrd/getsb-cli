@@ -1,6 +1,6 @@
 extern crate clap;
 
-use clap::{Arg, App, SubCommand};
+use clap::{Arg, App};
 use std::collections::HashMap;
 
 mod sender;
@@ -50,19 +50,24 @@ fn main() {
                  .value_name("HEADERS")
                  .help("Sets the headers of request")
                  .takes_value(true))
-        .subcommand(SubCommand::with_name("test")
-                        .about("controls testing features")
-                        .version("1.3")
-                        .author("Someone E. <someone_else@other.com>")
-                        .arg(Arg::with_name("debug")
-                                 .short("d")
-                                 .help("print debug information verbosely")))
+        .arg(Arg::with_name("to-file")
+                 .short("f")
+                 .long("to-file")
+                 .value_name("FILE")
+                 .help("Save all response to file")
+                 .takes_value(true))
         .get_matches();
+
+    let mut to_file = String::new();
 
     // Checking first request-file
     if let Some(file) = matches.value_of("request-file") {
+        if let Some(val) = matches.value_of("to-file") {
+            to_file = val.to_string();
+        }
+
         // Parsing file for creating request
-        proccess_file(file.to_string())
+        proccess_file(file, to_file);
     } else {
         let mut method = String::new();
         let mut url = String::new();
@@ -88,6 +93,10 @@ fn main() {
             method = val.to_string();
         }
 
+        if let Some(val) = matches.value_of("to-file") {
+            to_file = val.to_string();
+        }
+
         let request = Request {
             method: method,
             url: url,
@@ -95,12 +104,12 @@ fn main() {
             headers: header,
         };
 
-        sender::send(request);
+        sender::send(request, to_file);
     }
 }
 
 // Working with request info from file
-fn proccess_file(filename: String) {
-    let request = parser::parse_file(&filename);
-    sender::send(request);
+fn proccess_file(filename: &str, to_filename: String) {
+    let request = parser::parse_file(filename);
+    sender::send(request, to_filename);
 }
