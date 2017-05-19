@@ -1,3 +1,6 @@
+#![cfg_attr(feature="clippy", feature(plugin))]
+#![cfg_attr(feature="clippy", plugin(clippy))]
+
 extern crate clap;
 
 use clap::{Arg, App};
@@ -67,7 +70,7 @@ fn main() {
         }
 
         // Parsing file for creating request
-        proccess_file(file, to_file);
+        proccess_file(file, &to_file);
     } else {
         let mut method = String::new();
         let mut url = String::new();
@@ -76,7 +79,7 @@ fn main() {
 
         if let Some(headers) = matches.values_of("headers") {
             for h in headers {
-                let line: Vec<&str> = h.split(":").collect();
+                let line: Vec<&str> = h.split(':').collect();
                 header.insert(line[0].trim().to_string(), line[1].trim().to_string());
             }
         }
@@ -104,12 +107,12 @@ fn main() {
             headers: header,
         };
 
-        sender::send(request, to_file);
+        sender::send(request, &to_file);
     }
 }
 
 // Working with request info from file
-fn proccess_file(filename: &str, to_filename: String) {
+fn proccess_file(filename: &str, to_filename: &str) {
     let request = parser::parse_file(filename);
     sender::send(request, to_filename);
 }

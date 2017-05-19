@@ -8,7 +8,7 @@ use std::fs::File;
 use std::io::Write;
 use self::knock::response::Response;
 
-pub fn send(request: self::Request, path: String) {
+pub fn send(request: self::Request, path: &str) {
     let mut http = match HTTP::new(&request.url) {
         Ok(http) => http,
         Err(_) => {
@@ -25,9 +25,9 @@ pub fn send(request: self::Request, path: String) {
     match result {
         Ok(response) => {
             if path.is_empty() {
-                print_response(response);
+                print_response(&response);
             } else {
-                save_to_file(response, path);
+                save_to_file(&response, path);
             }
         }
         Err(_) => {
@@ -37,7 +37,7 @@ pub fn send(request: self::Request, path: String) {
     }
 }
 
-fn print_response(response: Response) {
+fn print_response(response: &Response) {
     println!("Status: {}\r\n", response.status);
 
     for (key, val) in response.header.iter() {
@@ -47,8 +47,8 @@ fn print_response(response: Response) {
     println!("\r\n\r\n{}", response.body);
 }
 
-fn save_to_file(response: Response, path: String) {
-    let mut file = match File::create(path.clone()) {
+fn save_to_file(response: &Response, path: &str) {
+    let mut file = match File::create(path) {
         Ok(file) => file,
         Err(_) => {
             errors::invalid_save_path();

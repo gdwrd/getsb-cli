@@ -36,7 +36,7 @@ pub fn parse_file(filename: &str) -> Request {
         }
     };
 
-    validate_json(json.clone());
+    validate_json(&json);
 
     let mut data: HashMap<String, String> = HashMap::new();
     let mut i = 0;
@@ -45,7 +45,7 @@ pub fn parse_file(filename: &str) -> Request {
         if json["headers"][i] != Value::Null {
             let mut tmp = json["headers"][i].to_string();
             tmp = remove_quotes(tmp);
-            let item: Vec<&str> = tmp.split(":").collect();
+            let item: Vec<&str> = tmp.split(':').collect();
             data.insert(item[0].to_string(), item[1].to_string());
         } else {
             break;
@@ -63,7 +63,7 @@ pub fn parse_file(filename: &str) -> Request {
 }
 
 // Checking the required fields in json
-fn validate_json(json: serde_json::Value) {
+fn validate_json(json: &serde_json::Value) {
     if json["method"] == Value::Null || json["url"] == Value::Null ||
        json["body"] == Value::Null || json["headers"] == Value::Null {
         errors::invalid_json();

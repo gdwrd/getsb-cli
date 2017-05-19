@@ -1,6 +1,6 @@
 [package]
 name = "getsb"
-version = "0.1.1"
+version = "0.1.2"
 authors = ["Nazarii Sheremet <nazarii.sheremet@gmail.com>"]
 
 description = "Getsb is a command line tool for sending HTTP request."
@@ -15,3 +15,7 @@ license = "MPL-2.0"
 clap = "2.23"
 knock = "0.1"
 serde_json = "0.9"
+clippy = { version = "0.0.134", optional = true }
+
+[features]
+default = []
